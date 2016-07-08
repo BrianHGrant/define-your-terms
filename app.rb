@@ -43,19 +43,6 @@ get('/words/:id/definitions/new') do
   erb(:word_definitions_form)
 end
 
-get('/words/:id/definitions/remove') do
-  @word = Word.find(params.fetch('id').to_i())
-  @definitions = @word.definitions()
-  erb(:word_definitions_remove_form)
-end
-
-get ('/words/:word_id/definitions/remove/:definition_id') do
-  @definitions = Word.find(params.fetch('id').to_i()).definitions()
-  @definition = Definition.find(params.fetch('id').to_i())
-  Definition.remove(@definition.id().to_i())
-  erb(:word_definitions_remove_form)
-end
-
 post('/definitions') do
   part = params.fetch('part')
   definition = params.fetch('definition')
