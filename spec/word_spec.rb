@@ -25,11 +25,19 @@ describe('Word') do
       expect(Word.all()).to(eq([]))
     end
   end
-  describe("#save") do
-   it("adds a word to the array of saved words") do
+  describe('#save') do
+   it('adds a word to the array of saved words') do
      test_word = Word.new(:term => "anneal")
      test_word.save()
      expect(Word.all()).to(eq([test_word]))
    end
- end
+  end
+  describe('.clear') do
+    it('clears the array of stored words') do
+      test_word = Word.new(:term => "anneal")
+      test_word.save()
+      Word.clear()
+      expect(Word.all()).to(eq([]))
+    end
+  end
 end
