@@ -1,0 +1,12 @@
+<h2>Your Words:</h2>
+<p>(Click on word to go to definition)</p>
+
+<ul>
+  <% @words.each() do |word| %>
+    <li><a href='/word/<%= word.id() %>'><%= word.term() %> </a></li>
+  <% end %>
+</ul>
+
+<form action="/words/new" method="post">
+  <button type="submit" id="btn_add_word" class="btn btn-success">Add Word</button>
+</form>
