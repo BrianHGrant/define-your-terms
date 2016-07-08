@@ -19,4 +19,19 @@ class Definition
   define_singleton_method(:clear) do
     @@definitions = []
   end
+
+  define_singleton_method(:remove) do |id|
+    @@definitions.delete_at(id-1)
+  end
+
+  define_singleton_method(:find) do |id|
+    found_definition = nil
+    @@definitions.each do |definition|
+      if definition.id().eql?(id)
+        found_definition = definition
+      end
+    end
+    found_definition
+  end
+
 end

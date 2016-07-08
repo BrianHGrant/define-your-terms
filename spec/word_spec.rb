@@ -56,7 +56,7 @@ describe('Word') do
       test_word.save()
       test_word2 = Word.new(:term => "solder")
       test_word2.save()
-      Word.remove((test_word2.id()))
+      Word.remove(test_word2.id())
       expect(Word.all()).to(eq([test_word]))
     end
   end

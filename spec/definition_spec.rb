@@ -2,6 +2,9 @@ require('rspec')
 require('definition')
 
 describe('Definition') do
+  before() do
+    Definition.clear()
+  end
   describe('#def') do
     it('will return the definition when entered') do
       test_definition = Definition.new(:part => 'verb', :def => 'heat (metal or glass) and allow it to cool slowly, in order to remove internal stresses and toughen it.')
@@ -41,6 +44,29 @@ describe('Definition') do
       test_definition.save()
       Definition.clear()
       expect(Definition.all()).to(eq([]))
+    end
+  end
+
+  describe('.remove') do
+    it('removes specific term from stored array') do
+      test_definition = Definition.new(:part => 'noun', :def => 'a low-melting alloy, especially one based on lead and tin or (for higher temperatures) on brass or silver, used for joining less fusible metals.')
+      test_definition.save()
+      test_definition2 = Definition.new(:part => 'verb', :def => 'join with solder.')
+      test_definition2.save()
+      Definition.remove(test_definition.id())
+      expect(Definition.all()).to(eq([test_definition2]))
+    end
+  end
+
+  describe('.find') do
+    it('finds and returns the definition based on its id number') do
+      test_definition = Definition.new(:part => 'noun', :def => 'a low-melting alloy, especially one based on lead and tin or (for higher temperatures) on brass or silver, used for joining less fusible metals.')
+      test_definition.save()
+      test_definition2 = Definition.new(:part => 'verb', :def => 'join with solder.')
+      test_definition2.save()
+      test_definition3 = Definition.new(:part => 'verb', :def => 'to join closely and intimately')
+      test_definition3.save()
+      expect(Definition.find(test_definition3.id())).to(eq(test_definition3))
     end
   end
 end
