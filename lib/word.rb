@@ -36,4 +36,8 @@ class Word
     @@words.delete_at(id-1)
   end
 
+  define_method(:add_definition) do |definition|
+    @definitions.push(definition)
+  end
+
 end

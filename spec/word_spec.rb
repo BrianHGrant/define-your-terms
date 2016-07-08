@@ -1,5 +1,6 @@
 require('rspec')
 require('word')
+require('definition')
 
 describe('Word') do
   before() do
@@ -68,6 +69,15 @@ describe('Word') do
       test_word2 = Word.new(:term => "solder")
       test_word2.save()
       expect(Word.find(test_word2.id())).to(eq(test_word2))
+    end
+  end
+
+  describe('#add_definition') do
+    it('will add a definition to an instance of word') do
+      test_word = Word.new(:term => "solder")
+      test_definition = Definition.new(:part => 'noun', :def => 'a low-melting alloy, especially one based on lead and tin or (for higher temperatures) on brass or silver, used for joining less fusible metals.')
+      test_word.add_definition(test_definition)
+      expect(test_word.definitions()).to(eq([test_definition]))
     end
   end
 end
