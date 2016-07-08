@@ -40,4 +40,14 @@ describe('Word') do
       expect(Word.all()).to(eq([]))
     end
   end
+
+  describe('.find') do
+   it('finds and returns word based on its id number') do
+     test_word = Word.new(:term => "anneal")
+     test_word.save()
+     test_word2 = Word.new(:term => "solder")
+     test_word2.save()
+     expect(Word.find(test_word2.id())).to(eq(test_word2))
+   end
+ end
 end
