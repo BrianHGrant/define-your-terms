@@ -3,10 +3,13 @@
 
 <ul>
   <% @words.each() do |word| %>
-    <li><a href='/word/<%= word.id() %>'><%= word.term() %> </a></li>
+    <li><a href='/words/<%= word.id() %>'><%= word.term() %> </a></li>
   <% end %>
 </ul>
 
-<form action="/words/new" method="post">
+<form action="/words/new" method="get">
   <button type="submit" id="btn_add_word" class="btn btn-success">Add Word</button>
+</form>
+<form action="/words/remove" method="get">
+  <button type="submit" id="btn_remove_word" class="btn btn-danger">Remove Word</button>
 </form>

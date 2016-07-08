@@ -1,0 +1,10 @@
+<h2>Remove a Word</h2>
+<p>(Click on X next to word to remove.) <span id="warning">Removal cannot be undone!!</span></p>
+<ul>
+  <% @words.each() do |word| %>
+    <li>[<a href="/words/remove/<%= word.id() %>">X</a>]<%= word.term() %></li>
+  <% end %>
+</ul>
+<form action="/" method="get">
+  <button type="submit" class="btn btn-primary">Back to Word List</button>
+</form>

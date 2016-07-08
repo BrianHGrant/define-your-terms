@@ -1,0 +1,14 @@
+<h2>Define your term: <%= @word.term() %> </h2>
+
+<form action="/definitions" method="post">
+  <input type="hidden" name="word_id" id="word_id" value="<%= @word.id() %>">
+  <div class="form-group">
+    <label for="part">Part of speech (ie: noun):</label>
+    <input type="text" name="part" id="part" class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="definition">Definition:</label>
+    <input type="text" name="definition" id="definition" class="form-control">
+  </div>
+  <button type="submit" class="btn btn-primary">Add Definition!</button>
+</form>

@@ -1,0 +1,10 @@
+<h2>Remove a Definition</h2>
+<p>(Click on number to remove definition from list.) <span id="warning">Removal cannot be undone!!</span></p>
+<ul>
+  <% @definitions.each() do |definition| %>
+    <li>[<a href="/words/<%= @word.id() %>/definitions/remove/<%= definition.id() %>">X</a>] <strong><%= definition.part() %></strong> <%= definition.def() %></li>
+  <% end %>
+</ul>
+<form action="/words/<%= @word.id() %>" method="get">
+  <button type="submit" class="btn btn-primary">Back to Word</button>
+</form>
