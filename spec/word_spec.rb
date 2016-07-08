@@ -2,6 +2,9 @@ require('rspec')
 require('word')
 
 describe('Word') do
+  before() do
+    Word.clear()
+  end
   describe('#term') do
     it('will return the term when entered') do
       test_word = Word.new(:term => "anneal")
@@ -42,12 +45,24 @@ describe('Word') do
   end
 
   describe('.find') do
-   it('finds and returns word based on its id number') do
-     test_word = Word.new(:term => "anneal")
-     test_word.save()
-     test_word2 = Word.new(:term => "solder")
-     test_word2.save()
-     expect(Word.find(test_word2.id())).to(eq(test_word2))
-   end
+    it('finds and returns word based on its id number') do
+      test_word = Word.new(:term => "anneal")
+      test_word.save()
+      test_word2 = Word.new(:term => "solder")
+      test_word2.save()
+      expect(Word.find(test_word2.id())).to(eq(test_word2))
+    end
  end
+
+  describe('.find') do
+    it('finds and returns word based on its id number') do
+      test_word = Word.new(:term => "anneal")
+      test_word.save()
+      test_word2 = Word.new(:term => "solder")
+      test_word2.save()
+      Word.remove((test_word2.id()))
+      expect(Word.all()).to(eq([test_word]))
+    end
+  end
+
 end

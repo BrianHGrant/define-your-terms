@@ -32,4 +32,8 @@ class Word
     found_word
   end
 
+  define_singleton_method(:remove) do |id|
+    @@words.delete_at(id-1)
+  end
+
 end
